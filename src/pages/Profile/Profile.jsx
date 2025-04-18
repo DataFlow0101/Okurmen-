@@ -15,7 +15,7 @@ function Profile() {
   };
 
   return (
-    <div className="account-container container">
+    <div className="profile-container">
       <h2>Профиль пользователя</h2>
       <div className="profile-info">
         <p><strong>Имя:</strong> {username}</p>
