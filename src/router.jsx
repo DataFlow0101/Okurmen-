@@ -9,6 +9,7 @@ import ResetPassword from "./pages/ressetPassword/RessetPassword";
 import VerifyEmailMessage from "./pages/register/verifyemailmessage/МerifyEmail";
 import EmailVerified from "./pages/register/verifyemailmessage/EmailVerified";
 import Profile from "./pages/Profile/Profile";
+import Header from "./components/Header/Header";
 
 
 
@@ -20,6 +21,7 @@ export const myRouter = createBrowserRouter([
         path: '/',
         element: <Layout />,
         children: [
+
             {
                 path: '/',
                 element: <Home />
@@ -55,6 +57,10 @@ export const myRouter = createBrowserRouter([
             {
                 path: "profile",
                 element: <Profile />,
+            },
+            {
+                path: "Header",
+                element: <Header />,
             }
         ]
     }
