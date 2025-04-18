@@ -27,14 +27,14 @@
     height: 15.257411003112793px;
     object-fit: contain;
     position: relative;
-    top: 2px; // чтобы немного опустить вниз
+    top: 2px;
   }
 
   .nav-wrapper {
     position: absolute;
-    left: 146.84px + 287px; // но CSS не может посчитать, поэтому укажем вручную
-    left: 433.84px; // логика: логотип + отступ = 146.84 + 287
-    top: 10px; // подогнано вручную по высоте, можешь подстроить
+    left: 146.84px + 287px;
+    left: 433.84px;
+    top: 10px;
   }
 
   .nav-links {

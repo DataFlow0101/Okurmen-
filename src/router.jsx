@@ -10,6 +10,7 @@ import VerifyEmailMessage from "./pages/register/verifyemailmessage/МerifyEmail
 import EmailVerified from "./pages/register/verifyemailmessage/EmailVerified";
 import Profile from "./pages/Profile/Profile";
 import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer.jsx";
 
 
 
@@ -61,6 +62,10 @@ export const myRouter = createBrowserRouter([
             {
                 path: "Header",
                 element: <Header />,
+            },
+            {
+                path: "Footer",
+                element: <Footer />,
             }
         ]
     }
