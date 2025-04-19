@@ -1,37 +1,18 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import { auth, db } from '../../FireBase/firebase';
-import {
-  createUserWithEmailAndPassword,
-  sendEmailVerification,
-  GoogleAuthProvider,
-  signInWithPopup
-} from 'firebase/auth';
-import { doc, setDoc } from 'firebase/firestore';
-import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 import EyeToggle from '../../Components/eye-password/EyeToggle';
 import './register.scss';
-import { FcGoogle } from 'react-icons/fc';
-import { useDispatch } from 'react-redux';
-import { setUser } from '../../components/Redux/userSlice';
+import planet from '../../img/Mirbek/planetmirba.png';
+import phone from '../../img/Mirbek/registerphone.png';
 
 function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
-  const [confirmPasswordError, setConfirmPasswordError] = useState('');
-  const [username, setUsername] = useState('');
-  const [usernameError, setUsernameError] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const [isGoogleLoading, setIsGoogleLoading] = useState(false);
+  const [confirmPassword, setConfirmPassword] = useState('');
 
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const googleProvider = new GoogleAuthProvider();
 
   const validateEmail = (email) => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -52,250 +33,97 @@ function Register() {
     return true;
   };
 
-  const validateConfirmPassword = (confirmPassword) => {
-    if (confirmPassword !== password) {
-      setConfirmPasswordError('Пароли не совпадают');
-      return false;
-    }
-    setConfirmPasswordError('');
-    return true;
-  };
-
-  const validateUsername = (username) => {
-    if (!username.trim()) {
-      setUsernameError('Имя пользователя не может быть пустым');
-      return false;
-    }
-    if (username.length < 3) {
-      setUsernameError('Имя пользователя должно содержать минимум 3 символа');
-      return false;
-    }
-    setUsernameError('');
-    return true;
-  };
-
-  const handleCreateUser = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (
-      !validateEmail(email) ||
-      !validatePassword(password) ||
-      !validateConfirmPassword(confirmPassword) ||
-      !validateUsername(username)
-    ) {
-      toast.error('Пожалуйста, исправьте ошибки перед регистрацией');
-      return;
-    }
-
-    setIsLoading(true);
-
-    try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
-
-      await setDoc(doc(db, 'users', user.uid), {
-        username,
-        email: user.email,
-        createdAt: new Date(),
-      });
-
-      dispatch(setUser({
-        uid: user.uid,
-        email: user.email,
-        username: username,
-      }));
-
-      await sendEmailVerification(user, {
-        url: `${window.location.origin}/profile`,
-        handleCodeInApp: true,
-      });
-
-      toast.success(
-        <div>
-          <p>Регистрация прошла успешно!</p>
-          <p>Письмо с подтверждением отправлено на {email}</p>
-        </div>,
-        { autoClose: 5000 }
-      );
-
-      navigate('/profile');
-    } catch (error) {
-      console.error('Ошибка регистрации:', error);
-      let errorMessage = 'Ошибка при регистрации';
-      switch (error.code) {
-        case 'auth/email-already-in-use':
-          errorMessage = 'Этот email уже используется';
-          break;
-        case 'auth/invalid-email':
-          errorMessage = 'Неверный формат email';
-          break;
-        case 'auth/weak-password':
-          errorMessage = 'Пароль слишком слабый';
-          break;
-        case 'auth/operation-not-allowed':
-          errorMessage = 'Регистрация временно недоступна';
-          break;
-      }
-      toast.error(errorMessage);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const signInWithGoogle = async () => {
-    setIsGoogleLoading(true);
-    try {
-      const result = await signInWithPopup(auth, googleProvider);
-      const user = result.user;
-
-      // Сохраняем пользователя в Firestore, если он новый
-      const userRef = doc(db, 'users', user.uid);
-      await setDoc(userRef, {
-        username: user.displayName || '',
-        email: user.email,
-        createdAt: new Date(),
-      }, { merge: true });
-
-      dispatch(setUser({
-        uid: user.uid,
-        email: user.email,
-        username: user.displayName || '',
-      }));
-
-      toast.success('Вы успешно вошли через Google');
-      navigate('/profile');
-    } catch (error) {
-      console.error('Ошибка входа через Google:', error);
-      let errorMessage = 'Ошибка при входе через Google';
-      if (error.code === 'auth/account-exists-with-different-credential') {
-        errorMessage = 'Аккаунт с этим email уже существует';
-      }
-      toast.error(errorMessage);
-    } finally {
-      setIsGoogleLoading(false);
+    if (validateEmail(email) && validatePassword(password)) {
+      
     }
   };
 
   return (
-    <div className="register">
-      <div className="register-content container">
-        <div className="register-menu">
-          <h1 className="reg-btn">Регистрация</h1>
-          <Link to="/signIn" className="sign-btn">Войти</Link>
-        </div>
+    <div className="register-container">
+      <img  src={phone} alt="" className="register-phone" />
+      <div className="blue">
+        <div className="blue-div"></div>
+      </div>
+    <div className="register-form-container">
+      <div className="blue-div"></div>
+      <img src={planet} alt="" />
+      <h1>Регистрация</h1>
+      
+      <div className="register-subheader">
+        <h2>Пассивный заработок</h2>
+        <p>Публичный трейдинг</p>
+      </div>
 
-        <form onSubmit={handleCreateUser} className="register-inputs">
-          <div className="register-input">
-            <p>Имя пользователя</p>
+      <form onSubmit={handleSubmit} className="register-form">
+        <div className="form-section">
+          
+          <div className="form-group">
             <input
-              id="username"
-              type="text"
-              value={username}
-              onChange={(e) => {
-                setUsername(e.target.value);
-                validateUsername(e.target.value);
-              }}
-              disabled={isLoading || isGoogleLoading}
-            />
-            {usernameError && <p className="error-message">{usernameError}</p>}
-          </div>
-
-          <div className="register-input">
-            <p>E-mail</p>
-            <input
-              id="email"
+              type="email"
+              placeholder="Email"
+              value={email}
               onChange={(e) => {
                 setEmail(e.target.value);
                 validateEmail(e.target.value);
               }}
-              value={email}
-              type="email"
-              disabled={isLoading || isGoogleLoading}
             />
-            {emailError && <p className="error-message">{emailError}</p>}
+            {emailError && <span className="error">{emailError}</span>}
           </div>
+        </div>
 
-          <div className="register-input">
-            <p>Пароль</p>
-            <div className="password-wrapper">
-              <input
-                id="password"
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                  validatePassword(e.target.value);
-                }}
-                value={password}
-                type={showPassword ? 'text' : 'password'}
-                disabled={isLoading || isGoogleLoading}
-              />
-              <EyeToggle
-                className="eye-icon"
-                showPassword={showPassword}
-                togglePassword={() => setShowPassword(!showPassword)}
-              />
-            </div>
-            {passwordError && <p className="error-message">{passwordError}</p>}
+        <div className="form-section">
+          
+          <div className="form-group password-group">
+            <input
+              type={showPassword ? 'text' : 'password'}
+              placeholder="Пароль"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+                validatePassword(e.target.value);
+              }}
+            />
+            <EyeToggle
+              className="eye-icon"
+              showPassword={showPassword}
+              togglePassword={() => setShowPassword(!showPassword)}
+            />
           </div>
-
-          <div className="register-input">
-            <p>Подтвердите пароль</p>
-            <div className="password-wrapper">
-              <input
-                id="confirmPassword"
-                onChange={(e) => {
-                  setConfirmPassword(e.target.value);
-                  validateConfirmPassword(e.target.value);
-                }}
-                value={confirmPassword}
-                type={showConfirmPassword ? 'text' : 'password'}
-                disabled={isLoading || isGoogleLoading}
-              />
-              <EyeToggle
-                className="eye-icon"
-                showPassword={showConfirmPassword}
-                togglePassword={() => setShowConfirmPassword(!showConfirmPassword)}
-              />
-            </div>
-            {confirmPasswordError && <p className="error-message">{confirmPasswordError}</p>}
+            {passwordError && <span className="error">{passwordError}</span>}
+        </div>
+        <div className="form-section">
+          
+          <div className="form-group password-group">
+            <input
+              type={showPassword ? 'text' : 'password'}
+              placeholder="Подтвердить пароль"
+              value={confirmPassword}
+              onChange={(e) => {
+                setConfirmPassword(e.target.value);
+                validatePassword(e.target.value);
+              }}
+            />
+            <EyeToggle
+              className="eye-icon"
+              showPassword={showPassword}
+              togglePassword={() => setShowPassword(!showPassword)}
+            />
           </div>
+            {passwordError && <span className="error">{passwordError}</span>}
+        </div>
 
-          <div className="register-short">
-            <button
-              type="submit"
-              disabled={
-                isLoading ||
-                isGoogleLoading ||
-                emailError ||
-                passwordError ||
-                confirmPasswordError ||
-                usernameError ||
-                !email ||
-                !password ||
-                !confirmPassword ||
-                !username
-              }
-            >
-              {isLoading ? 'Регистрация...' : 'Регистрация'}
-            </button>
+        <button type="submit" className="register-btn">
+          Зарегистрироваться
+        </button>
 
-            <div className="google-auth">
-              <p>Или</p>
-              <button
-                type="button"
-                className="google-btn"
-                onClick={signInWithGoogle}
-                disabled={isLoading || isGoogleLoading}
-              >
-                <FcGoogle className="google-icon" />
-                {isGoogleLoading ? 'Вход...' : 'Войти через Google'}
-              </button>
-            </div>
-
-            <p>Уже регистрировались? <Link to="/signIn">Войти</Link></p>
-          </div>
-        </form>
-      </div>
+        <div className="login-link">
+          <p>Уже зарегистрированы? <Link to="/signIn">Войти в аккаунт</Link></p>
+        </div>
+      </form>
     </div>
+              </div>
   );
 }
 
