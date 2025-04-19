@@ -1,8 +1,13 @@
 import React from 'react'
+import TeleBlock from '../../components/TeleBlock/TeleBlock'
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <div>Home
+
+    
+    <TeleBlock></TeleBlock>
+    </div>
   )
 }
 
