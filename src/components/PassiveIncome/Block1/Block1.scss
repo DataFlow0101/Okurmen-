@@ -1,0 +1,32 @@
+.hand{
+    width: 1008px;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    margin-bottom: 76px;
+    margin-top: 83px;
+    h1{
+        color: rgb(255, 255, 255);
+        width: 551px;
+        font-family: Montserrat;
+        font-size: 26px;
+        font-weight: 600;
+        line-height: 130%;
+        text-align: left;
+    }
+    .BlueLine{
+    width: 208px;
+    height: 2px;
+    border-radius: 20px;
+    background: linear-gradient(0.00deg, rgb(44, 144, 247) -24.363%,rgb(5, 192, 204) 118.272%);
+    }
+    p{
+        color: rgb(255, 255, 255);
+        width: 595px;
+        font-family: Montserrat;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 170%;
+        text-align: left;
+    }
+}
