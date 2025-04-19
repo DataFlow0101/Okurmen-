@@ -1,0 +1,140 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header {
+  width: 100%;
+  background-color: #0a192f;
+  color: white;
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+
+  .header__container {
+    width: 90%;
+    max-width: 1216px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .logo img {
+    width: 150px;
+    height: auto;
+  }
+
+  .nav-wrapper {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    margin-top: 10px;
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .link {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      padding: 5px 10px;
+      text-align: center;
+    }
+  }
+
+  .cta-button {
+    background-color: #2C90F7;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 16px;
+    padding: 8px 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s ease;
+
+    img {
+      width: 20px;
+      height: 20px;
+    }
+
+    &:hover {
+      background-color: #e67e22;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .header__container {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .nav-wrapper {
+    order: 2;
+  }
+
+  .cta-button {
+    order: 3;
+  }
+}
+
+@media (max-width: 600px) {
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .link {
+    font-size: 14px;
+    grid-column: auto;
+  }
+
+  .cta-button {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+}
+/* 1024px–1366px */
+@media (max-width: 1366px) and (min-width: 1024px) {
+  .header__container {
+    gap: 15px;
+  }
+
+  .logo img {
+    width: 130px;
+  }
+
+  .nav-links {
+    gap: 18px;
+  }
+
+  .link {
+    font-size: 15px;
+
+    &.link1 { width: 135px; }
+    &.link2 { width: 140px; }
+    &.link3 { width: 150px; }
+    &.link4 { width: 95px; }
+  }
+
+  .cta-button {
+    font-size: 15px;
+    padding: 7px 14px;
+
+    img {
+      width: 18px;
+      height: 18px;
+    }
+  }
+}
+
