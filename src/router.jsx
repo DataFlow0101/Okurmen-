@@ -9,53 +9,77 @@ import ResetPassword from "./pages/ressetPassword/RessetPassword";
 import VerifyEmailMessage from "./pages/register/verifyemailmessage/МerifyEmail";
 import EmailVerified from "./pages/register/verifyemailmessage/EmailVerified";
 import Profile from "./pages/Profile/Profile";
-
-
-
+import Cabinet from "./pages/Profile/component/Кабинет/Cabinet";
+import Traders from "./pages/Profile/component/Трейдеры/Traders";
+import Statistics from "./pages/Profile/component/Статистика/Statistics";
+import Instructions from "./pages/Profile/component/Инструкции/Instructions";
+import Help from "./pages/Profile/component/Помощь/Help";
 
 
 
 export const myRouter = createBrowserRouter([
     {
-        path: '/',
-        element: <Layout />,
-        children: [
+      path: '/',
+      element: <Layout />,
+      children: [
+        {
+          path: '/',
+          element: <Home />,
+        },
+        {
+          path: '/register',
+          element: <Register />,
+        },
+        {
+          path: '/signIn',
+          element: <SignIn />,
+        },
+        {
+          path: '/forgot-password',
+          element: <ForgotPassword />,
+        },
+        {
+          path: '/email-sent',
+          element: <EmailSent />,
+        },
+        {
+          path: '/reset-password',
+          element: <ResetPassword />,
+        },
+        {
+          path: '/verify-email-message',
+          element: <VerifyEmailMessage />,
+        },
+        {
+          path: '/resend-verification',
+          element: <EmailVerified />,
+        },
+        {
+          path: '/profile',
+          element: <Profile />,
+          children: [
             {
-                path: '/',
-                element: <Home />
+              path: 'Cabinet',
+              element: <Cabinet />,
             },
             {
-                path: "/register",
-                element: <Register />,
+              path: 'Traders',
+              element: <Traders />,
             },
             {
-                path: "/signIn",
-                element: <SignIn />,
+              path: 'Statistics',
+              element: <Statistics />,
             },
             {
-                path: "/forgot-password",
-                element: <ForgotPassword />,
+              path: 'Instructions',
+              element: <Instructions />,
             },
             {
-                path: "/email-sent",
-                element: <EmailSent />,
+              path: 'Help',
+              element: <Help />,
             },
-            {
-                path: "/reset-password",
-                element: <ResetPassword />,
-            },
-            {
-                path: "/verify-email-message",
-                element: <VerifyEmailMessage />,
-            },
-            {
-                path: "/resend-verification",
-                element: <EmailVerified />,
-            },
-            {
-                path: "profile",
-                element: <Profile />,
-            }
-        ]
-    }
-])
+          ],
+        },
+      ],
+    },
+  ]);
