@@ -1,0 +1,303 @@
+.signin-wrapper {
+  min-height: 100vh;
+  background: url('../../img/background.jpg') no-repeat center center / cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.signin-box {
+  background-image: url('../../img/Mirbek/bgregister.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  border-radius: 20px;
+  padding: 3rem;
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 0 40px rgba(0, 255, 255, 0.1);
+  transform: translateY(20px);
+  opacity: 0;
+  animation: slideUp 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation-delay: 0.3s;
+
+  img {
+    position: absolute;
+    top: -234px;
+    left: 12px;
+    transform: rotate(-40deg);
+    opacity: 0.4;
+    width: 1080px;
+    height: 970px;
+    z-index: -1;
+    pointer-events: none;
+    animation: rotateSlow 60s linear infinite, pulseGlow 8s ease-in-out infinite alternate;
+  }
+
+  h2 {
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 10px rgba(0, 234, 255, 0.5);
+    animation: textGlow 2s ease-in-out infinite alternate;
+  }
+
+  .tabs {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    position: relative;
+
+    .tab {
+      flex: 1;
+      padding: 0.5rem;
+      cursor: pointer;
+      color: #ccc;
+      border-bottom: 2px solid transparent;
+      position: relative;
+      transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+      &.active {
+        color: #00eaff;
+        border-bottom: 2px solid #00eaff;
+        transform: translateY(-3px);
+        text-shadow: 0 0 8px rgba(0, 234, 255, 0.7);
+      }
+
+      &:hover:not(.active) {
+        color: #7aefff;
+        transform: translateY(-2px);
+      }
+
+      .tooltip-icon {
+        margin-left: 5px;
+        position: relative;
+        display: inline-block;
+        transition: transform 0.3s ease;
+
+        svg {
+          vertical-align: middle;
+        }
+
+        .tooltip-text {
+          visibility: hidden;
+          position: absolute;
+          top: -40px;
+          left: 50%;
+          transform: translateX(-50%) scale(0.9);
+          background: #222;
+          color: #fff;
+          padding: 6px 10px;
+          border-radius: 6px;
+          white-space: nowrap;
+          font-size: 12px;
+          opacity: 0;
+          transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        &:hover {
+          transform: scale(1.1);
+          
+          .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+            transform: translateX(-50%) scale(1);
+          }
+        }
+      }
+    }
+  }
+
+  .signin-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    .password-input{
+      margin-left: -10px;
+    }
+
+    input {
+      width: 90%;
+      padding: 14px 16px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      color: #fff;
+      font-size: 15px;
+      transition: all 0.3s ease;
+      transform-origin: center;
+      
+      &::placeholder {
+        color: #bbb;
+        transition: all 0.3s ease;
+      }
+      
+      &:focus {
+        outline: none;
+        border-color: #00c8ff;
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 0 15px rgba(0, 200, 255, 0.5);
+        transform: scale(1.02);
+        
+        &::placeholder {
+          opacity: 0.5;
+          transform: translateX(5px);
+        }
+      }
+    }
+
+    .password-wrapper {
+      position: relative;
+
+      .eye-icon {
+        position: absolute;
+        right: 22px;
+        top: 54%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        color: #aaa;
+        font-size: 18px;
+        transition: all 0.3s ease;
+        
+        &:hover {
+          color: #00c8ff;
+          transform: translateY(-50%) scale(1.2);
+          text-shadow: 0 0 8px rgba(0, 200, 255, 0.5);
+        }
+      }
+    }
+  }
+
+  .error-message {
+    color: #ff4d4f;
+    margin-bottom: 1rem;
+    font-size: 14px;
+    animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .signin-btn {
+    width: 100%;
+    padding: 0.9rem;
+    background: linear-gradient(to right, #00d4ff, #0075ff);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 15px rgba(0, 117, 255, 0.3);
+    z-index: 1;
+
+    &:hover {
+      background: linear-gradient(to right, #00b4e6, #0066dd);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 117, 255, 0.4);
+    }
+
+    &:active {
+      transform: translateY(1px);
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: 0.5s;
+      z-index: -1;
+    }
+
+    &:hover::before {
+      left: 100%;
+    }
+  }
+
+  .signin-links {
+    font-size: 14px;
+
+    a {
+      color: #00eaff;
+      margin: 0 5px;
+      text-decoration: none;
+      position: relative;
+      transition: all 0.3s ease;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background: #00eaff;
+        transition: width 0.3s ease;
+      }
+
+      &:hover {
+        text-shadow: 0 0 8px rgba(0, 234, 255, 0.7);
+        
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+/* Keyframes for animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to { 
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes rotateSlow {
+  from { transform: rotate(-40deg); }
+  to { transform: rotate(320deg); }
+}
+
+@keyframes pulseGlow {
+  0% { opacity: 0.3; }
+  50% { opacity: 0.5; }
+  100% { opacity: 0.3; }
+}
+
+@keyframes textGlow {
+  from { text-shadow: 0 0 10px rgba(0, 234, 255, 0.5); }
+  to { text-shadow: 0 0 15px rgba(0, 234, 255, 0.8), 0 0 20px rgba(0, 234, 255, 0.4); }
+}
+
+@keyframes shake {
+  10%, 90% { transform: translate3d(-1px, 0, 0); }
+  20%, 80% { transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+  40%, 60% { transform: translate3d(4px, 0, 0); }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0px); }
+}

@@ -1,0 +1,119 @@
+.advantages {
+  position: relative;
+  background: rgb(8, 30, 46);
+  color: #fff;
+  padding: 80px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  overflow: hidden; 
+  font-family: Montserrat;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: url('/TeleBlock/Frame.png') no-repeat center center;
+    background-size: cover;
+    transform: rotate(40.63deg);
+    z-index: 0;
+    opacity: 0.2;
+  }
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  &__title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 16px;
+  }
+
+  &__subtitle {
+    max-width: 700px;
+    margin-bottom: 64px;
+    font-size: 1rem;
+    color: #ccc;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+
+    @media (min-width: 1024px) {
+      flex-direction: row;
+    }
+  }
+
+  &__image img {
+    width: 494.55px;
+    height: 600.64px;
+    
+  }
+
+  &__cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    max-width: 768px;
+
+    @media (min-width: 768px) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  &__card {
+    width: 327.84px;
+    height: 320px;
+    background: #1e2a38;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    margin: 0 auto;
+
+    &-header {
+      margin: 0 auto;
+      align-items: center;
+
+      img {
+        width: 79px;
+        height: 79px;
+      }
+
+      h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+      }
+    }
+
+    p {
+      font-size: 0.95rem;
+      color: #bbb;
+      line-height: 1.5;
+    }
+  }
+
+  &__button {
+    margin-top: 64px;
+    background: linear-gradient(to right, #22d3ee, #3b82f6);
+    color: #fff;
+    padding: 12px 32px;
+    border-radius: 9999px;
+    font-size: 1.125rem;
+    font-weight: 600;
+    transition: opacity 0.3s;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}

@@ -1,0 +1,399 @@
+html, body {
+  overflow-x: hidden;
+}
+
+body {
+  background-color: #1a2a39;
+  color: #fff;
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Анимация фона */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.register-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 40px;
+  background: radial-gradient(circle at top right, #1e2f45, #0e1c2b);
+  background-size: 200% 200%;
+  animation: gradientShift 15s ease infinite;
+  overflow: hidden;
+  
+  .register-phone {
+    max-width: 100%;
+    height: 550px;
+    margin-top: 20px;
+    flex-shrink: 0;
+    transition: transform 0.5s ease;
+    
+    &:hover {
+      transform: translateY(-10px);
+    }
+  }
+  
+  .blue {
+    position: relative;
+    height: 100%;
+    
+    .blue-div {
+      position: absolute;
+      width: 92px;
+      height: 88px;
+      background: linear-gradient(135deg, #2C90F7, #94B9FF);
+      top: -71%;
+      right: -41px;
+      border-radius: 50%;
+      z-index: 1;
+      transform: translate(9%, 186%);
+      animation: float 6s ease-in-out infinite;
+    }
+  }
+}
+
+/* Анимация плавающего круга */
+@keyframes float {
+  0% { transform: translate(9%, 186%) translateY(0px); }
+  50% { transform: translate(9%, 186%) translateY(-15px); }
+  100% { transform: translate(9%, 186%) translateY(0px); }
+}
+
+.register-form-container {
+  width: 100%;
+  max-width: 557px;
+  width: 100%;
+  padding: 40px 30px;
+  border-radius: 16px;
+  position: relative;
+  z-index: 1;
+  background-image: url('../../img/Mirbek/bgregister.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.4);
+  }
+  
+  img {
+    position: absolute;
+    top: -60px;
+    left: -90px;
+    transform: rotate(-40deg);
+    opacity: 0.4;
+    width: 1080px;
+    height: 970px;
+    z-index: -1;
+    pointer-events: none;
+    animation: rotateSlow 60s linear infinite;
+  }
+
+  /* Анимация медленного вращения */
+  @keyframes rotateSlow {
+    0% { transform: rotate(-40deg); }
+    100% { transform: rotate(320deg); }
+  }
+
+  h1 {
+    font-size: 28px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #fff;
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(90deg, #00c8ff, #007bff);
+      border-radius: 3px;
+      animation: linePulse 2s ease infinite;
+    }
+  }
+  
+  /* Анимация пульсации линии под заголовком */
+  @keyframes linePulse {
+    0% { width: 50px; opacity: 1; }
+    50% { width: 70px; opacity: 0.7; }
+    100% { width: 50px; opacity: 1; }
+  }
+
+  .register-subheader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+
+    h2, p {
+      font-size: 15px;
+      color: #FFFFFF;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+
+      &:hover {
+        color: #73FFF2;
+        transform: translateY(-2px);
+      }
+      
+      &::after {
+        content: '';
+        display: block;
+        width: 0%;
+        height: 2px;
+        background: linear-gradient(90deg, #00c8ff, #007bff);
+        margin-top: 5px;
+        transition: width 0.3s ease;
+      }
+      
+      &:hover::after {
+        width: 100%;
+        animation: lineGlow 1.5s ease infinite;
+      }
+    }
+  }
+  
+  /* Анимация свечения линии */
+  @keyframes lineGlow {
+    0% { box-shadow: 0 0 5px rgba(0, 200, 255, 0.5); }
+    50% { box-shadow: 0 0 15px rgba(0, 200, 255, 0.8); }
+    100% { box-shadow: 0 0 5px rgba(0, 200, 255, 0.5); }
+  }
+
+  .register-form {
+    .form-section {
+      margin-bottom: 25px;
+      animation: fadeInUp 0.5s ease forwards;
+      opacity: 0;
+      
+      &:nth-child(1) { animation-delay: 0.1s; }
+      &:nth-child(2) { animation-delay: 0.2s; }
+      &:nth-child(3) { animation-delay: 0.3s; }
+      
+      h3 {
+        font-size: 16px;
+        font-weight: normal;
+        margin-bottom: 10px;
+        color: #ccc;
+      }
+
+      .form-group {
+        position: relative;
+
+        input {
+          width: 90%;
+          padding: 14px 16px;
+          background: rgba(255, 255, 255, 0.07);
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          border-radius: 10px;
+          color: #fff;
+          font-size: 15px;
+          transition: all 0.3s ease;
+          
+          &::placeholder {
+            color: #bbb;
+            transition: opacity 0.3s ease;
+          }
+          
+          &:focus {
+            outline: none;
+            border-color: #00c8ff;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 10px rgba(0, 200, 255, 0.3);
+            
+            &::placeholder {
+              opacity: 0.5;
+            }
+          }
+        }
+
+        &.password-group {
+          .eye-icon {
+            position: absolute;
+            right: 22px;
+            top: 54%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #aaa;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            
+            &:hover {
+              color: #00c8ff;
+              transform: translateY(-50%) scale(1.1);
+            }
+          }
+        }
+      }
+      
+      .error {
+        color: #ff4d4f;
+        font-size: 12px;
+        margin-top: 5px;
+        display: block;
+        animation: shake 0.5s ease;
+      }
+    }
+    
+    /* Анимация встряски при ошибке */
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-5px); }
+      40%, 80% { transform: translateX(5px); }
+    }
+    
+    /* Анимация появления элементов формы */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .register-btn {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #00c8ff, #007bff);
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: 0.5s;
+      }
+      
+      &:hover {
+        filter: brightness(1.1);
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 200, 255, 0.4);
+        
+        &::before {
+          left: 100%;
+        }
+      }
+      
+      &:active {
+        transform: translateY(-1px);
+      }
+      
+      &:disabled {
+        background: #555;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+        
+        &::before {
+          display: none;
+        }
+      }
+    }
+
+    .login-link {
+      text-align: center;
+      font-size: 14px;
+      color: #ccc;
+      position: relative;
+      animation: fadeIn 0.8s ease 0.4s forwards;
+      opacity: 0;
+      
+      a {
+        color: #00c8ff;
+        text-decoration: none;
+        position: relative;
+        transition: color 0.3s ease;
+        overflow: hidden;
+        
+        &::after {
+          content: '';
+          display: block;
+          width: 0%;
+          height: 2px;
+          background: linear-gradient(90deg, #00c8ff, #007bff);
+          margin-top: 5px;
+          transition: width 0.3s ease-in-out;
+          position: absolute;
+          left: 0;
+        }
+        
+        &:hover {
+          color: #73FFF2;
+          transform: translateY(-1px);
+        }
+        
+        &:hover::after {
+          width: 100%;
+          animation: lineGlow 1.5s ease infinite;
+        }
+      }
+    }
+    
+    /* Анимация плавного появления */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  }
+}
+
+/* Адаптивные стили */
+@media (max-width: 768px) {
+  .register-container {
+    padding: 20px;
+    flex-direction: column;
+    
+    .register-phone {
+      height: 400px;
+      margin-bottom: 30px;
+    }
+    
+    .blue-div {
+      display: none;
+    }
+  }
+  
+  .register-form-container {
+    padding: 30px 20px;
+    
+    img {
+      width: 800px;
+      height: 700px;
+      top: -40px;
+      left: -60px;
+    }
+  }
+}
