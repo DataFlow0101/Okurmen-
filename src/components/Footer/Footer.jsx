@@ -19,7 +19,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Справа: 4 иконки + 1 ссылка под ними */}
           <div className="footer__block footer__block--right">
             <div className="footer__icons-container">
               <a href="#"><img src="/Vector.svg" alt="icon1" className="footer__icon footer__icon--large" /></a>
