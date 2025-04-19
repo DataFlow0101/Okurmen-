@@ -1,0 +1,52 @@
+.cabinet-container{
+    .cabinet-content{
+        width: 1248px;
+        height: 127px;
+        border-radius: 20px;
+        background-color: rgba(23, 35, 51, 0.8);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        button{
+            width: 80px;
+            height: 50px;
+            border-radius: 8px;
+            border: none;
+            margin-right: 50px;
+            background-color: rgba(44, 144, 247, 1);
+            color: white;
+            font-size: 16px;
+        }
+        .avatar-wrapper{
+            margin-left: 50px;
+        }
+        .avatar{
+            width: 85px;
+            height: 85px;
+            border-radius: 50%;
+            background-color: black;
+        }
+        .cabinet-info{
+            display: flex;
+            gap: 20px;
+            p{
+            color: white;
+            font-family: Montserrat;
+font-weight: 600;
+font-size: 24px;
+line-height: 130%;
+letter-spacing: 0%;
+
+            }
+        }
+        .edit-avatar-btn{
+            position: absolute;
+            border: none;   
+            background: transparent;
+            margin-top: 45px;
+            margin-left: -35px;
+            font-size: 25px;
+        }
+        
+    }
+}

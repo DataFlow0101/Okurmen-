@@ -1,31 +1,130 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { logoutUser } from '../../components/Redux/auth/authSlice'; // Предполагается, что у вас есть такой action
-import "./profile.scss";
+import * as React from 'react';
+import PropTypes from 'prop-types';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 
-function Profile() {
-  const { username, email } = useSelector((state) => state.user);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+// Импорт страниц
+import Cabinet from './component/Кабинет/Cabinet';
+import Traders from './component/Трейдеры/Traders';
+import Statistics from './component/Статистика/Statistics';
+import Instructions from './component/Инструкции/Instructions';
+import Help from './component/Помощь/Help';
+import './Profile.scss';
 
-  const handleLogout = () => {
-    dispatch(logoutUser()); // Диспатчим action выхода
-    navigate('/register'); // Перенаправляем на страницу входа
-  };
+// Импорт иконок
+
+import { BiCabinet } from "react-icons/bi";
+import { FaPeopleGroup } from "react-icons/fa6";
+import { IoStatsChartSharp } from "react-icons/io5";
+import { AiOutlineBook } from "react-icons/ai";
+import { FaHandsHelping } from "react-icons/fa";
+
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
 
   return (
-    <div className="profile-container">
-      <h2>Профиль пользователя</h2>
-      <div className="profile-info">
-        <p><strong>Имя:</strong> {username}</p>
-        <p><strong>Email:</strong> {email}</p>
-      </div>
-      <button className="logout-button" onClick={handleLogout}>
-        Выйти
-      </button>
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`vertical-tabpanel-${index}`}
+      aria-labelledby={`vertical-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 2 }}>
+          <Typography component="div">{children}</Typography>
+        </Box>
+      )}
     </div>
   );
 }
 
-export default Profile;
+TabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+};
+
+function a11yProps(index) {
+  return {
+    id: `vertical-tab-${index}`,
+    'aria-controls': `vertical-tabpanel-${index}`,
+  };
+}
+
+export default function ProfileTabs() {
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+  return (
+    <div>
+    <Box
+     className='profile-container'
+      sx={{
+        flexGrow: 1,
+        bgcolor: 'background.paper',
+        display: 'flex',
+        minHeight: '100%',
+     
+      }}
+      >
+      <Tabs
+        className='profile-tabs'
+        orientation="vertical"
+        variant="scrollable"
+        value={value}
+        onChange={handleChange}
+        aria-label="Profile Tabs"
+        sx={{ borderRight: 1, borderColor: 'divider', width: 200 }}
+        >
+        <Tab
+          icon={<BiCabinet className='icon'/>}
+          label="Кабинет"
+          {...a11yProps(0)}
+          />
+        <Tab
+          icon={<FaPeopleGroup className='icon' />}
+          label="Трейдеры"
+          {...a11yProps(1)}
+          />
+        <Tab
+          icon={<IoStatsChartSharp className='icon'/>}
+          label="Статистика"
+          {...a11yProps(2)}
+          />
+        <Tab
+          icon={<AiOutlineBook className='icon' />}
+          label="Инструкции"
+          {...a11yProps(3)}
+          />
+        <Tab
+          icon={<FaHandsHelping  className='icon'/>}
+          label="Помощь"
+          {...a11yProps(4)}
+          />
+      </Tabs>
+
+      <TabPanel value={value} index={0}>
+        <Cabinet />
+      </TabPanel>
+      <TabPanel value={value} index={1}>
+        <Traders />
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+        <Statistics />
+      </TabPanel>
+      <TabPanel value={value} index={3}>
+        <Instructions />
+      </TabPanel>
+      <TabPanel value={value} index={4}>
+        <Help />
+      </TabPanel>
+    </Box>
+          </div>
+  );
+}
