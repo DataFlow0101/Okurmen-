@@ -1,0 +1,279 @@
+.block1 {
+  background: linear-gradient(to right, #0f1a2c, #0c1220);
+  color: white;
+  padding: 60px 20px;
+  position: relative;
+  overflow: hidden;
+  min-height: 60vh;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  display: flex; /* Добавляем flex для лучшего контроля высоты */
+  flex-direction: column;
+
+  .container {
+    max-width: 1240px;
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    flex: 1; /* Контейнер растягивается на всю высоту */
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    min-height: 100%; /* Убедимся, что контент занимает всю высоту */
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__left {
+    flex: 1;
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+
+    @media (min-width: 768px) {
+      text-align: left;
+      margin-right: 25px;
+      width: auto;
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: bold;
+      margin: 0 auto 20px auto;
+      max-width: 90%;
+
+      @media (min-width: 768px) {
+        font-size: 40px;
+        margin: 0 0 20px 0;
+      }
+    }
+
+    p {
+      color: #ccc;
+      font-size: 1rem;
+      margin: 0 auto 30px auto;
+      max-width: 90%;
+
+      @media (min-width: 768px) {
+        font-size: 1.1rem;
+        margin: 0 0 30px 0;
+      }
+    }
+
+    button {
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+
+      @media (min-width: 768px) {
+        padding: 12px 24px;
+      }
+
+      &:hover {
+        background: linear-gradient(to right, #0099ff, #005eff);
+      }
+    }
+  }
+
+  .bitSilindImg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.4;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  .blok1__bitcoin {
+    position: absolute;
+    width: 448px; /* Фиксируем ширину на десктопе */
+    max-width: 90%;
+    min-width: 300px;
+    top: 0;
+    left: 0;
+    transform: translateY(0); /* Убираем скачки при позиционировании */
+
+    @media (max-width: 1024px) {
+      width: clamp(250px, 35%, 350px); /* Плавное масштабирование */
+      min-width: 250px;
+    }
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  .blok1__silindr {
+    position: absolute;
+    width: 176px; /* Фиксируем ширину на десктопе */
+    max-width: 40%;
+    min-width: 150px;
+    top: 50%;
+    left: 10%;
+    transform: translateY(-50%); /* Центрируем по вертикали без скачков */
+
+    @media (max-width: 1024px) {
+      width: clamp(120px, 15%, 150px); /* Плавное масштабирование */
+      min-width: 120px;
+    }
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  &__right {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    width: 100%;
+    min-height: 300px; /* Минимальная высота для стабильности */
+
+    @media (min-width: 768px) {
+      margin-top: 0;
+      min-height: 530px; /* Соответствует высоте .block1__trader */
+    }
+
+    img {
+      position: absolute;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .block1__trader {
+      position: relative;
+      z-index: 10;
+      width: clamp(120px, 30%, 191px); /* Плавное масштабирование */
+      max-width: 191px;
+      height: auto;
+
+      @media (min-width: 768px) {
+        width: 191px;
+        height: 530px;
+      }
+
+      @media (max-width: 480px) {
+        width: 120px;
+      }
+    }
+
+    .block1__graph1 {
+      top: 5%;
+      left: 5%;
+      width: clamp(150px, 40%, 317px); /* Плавное масштабирование */
+      max-width: 317px;
+
+      @media (min-width: 768px) {
+        top: -135px;
+        left: -20px;
+        width: 317px;
+      }
+
+      @media (max-width: 480px) {
+        width: 150px;
+      }
+    }
+
+    .block1__graph2 {
+      top: -20%;
+      right: 5%;
+      width: clamp(140px, 40%, 302px); /* Плавное масштабирование */
+      max-width: 302px;
+
+      @media (min-width: 768px) {
+        top: -140px;
+        right: -50px;
+        width: 302px;
+      }
+
+      @media (max-width: 480px) {
+        width: 140px;
+      }
+    }
+
+    .bg {
+      z-index: 0;
+      opacity: 0.1;
+      width: 100%;
+      height: auto;
+    }
+
+    .chartLeft {
+      top: -10%;
+      left: 2%;
+    }
+
+    .ramka {
+      top: -15%;
+      right: 0;
+    }
+
+    .card {
+      top: -12%;
+      right: 0;
+    }
+
+    .group {
+      top: 0;
+      right: 15%;
+    }
+
+    .vector {
+      top: 5%;
+      right: 0;
+      width: clamp(50px, 20%, 100px); /* Плавное масштабирование */
+      max-width: 100px;
+    }
+
+    .vector1 {
+      top: 4%;
+      right: 0;
+      width: clamp(50px, 20%, 100px); /* Плавное масштабирование */
+      max-width: 100px;
+    }
+
+    .vectors {
+      width: clamp(150px, 40%, 250px); /* Плавное масштабирование */
+      max-width: 250px;
+      top: 60%;
+      left: 50%;
+      transform: translateX(-50%);
+
+      @media (min-width: 768px) {
+        width: 250px;
+        top: 340px;
+        left: 0;
+        transform: none;
+      }
+
+      @media (max-width: 480px) {
+        width: 150px;
+        top: 50%;
+      }
+    }
+  }
+}
