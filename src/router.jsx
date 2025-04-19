@@ -14,108 +14,31 @@ import Traders from "./pages/Profile/component/Трейдеры/Traders";
 import Statistics from "./pages/Profile/component/Статистика/Statistics";
 import Instructions from "./pages/Profile/component/Инструкции/Instructions";
 import Help from "./pages/Profile/component/Помощь/Help";
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer.jsx";
-
-
-
-
-
 
 export const myRouter = createBrowserRouter([
-    {
-      path: '/',
-      element: <Layout />,
-      children: [
-        {
-          path: '/',
-          element: <Home />,
-        },
-        {
-          path: '/register',
-          element: <Register />,
-        },
-        {
-          path: '/signIn',
-          element: <SignIn />,
-        },
-        {
-          path: '/forgot-password',
-          element: <ForgotPassword />,
-        },
-        {
-          path: '/email-sent',
-          element: <EmailSent />,
-        },
-        {
-          path: '/reset-password',
-          element: <ResetPassword />,
-        },
-        {
-          path: '/verify-email-message',
-          element: <VerifyEmailMessage />,
-        },
-        {
-          path: '/resend-verification',
-          element: <EmailVerified />,
-        },
-        {
-          path: '/profile',
-          element: <Profile />,
-          children: [
-        path: '/',
-        element: <Layout />,
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      { path: "/", element: <Home /> },
+      { path: "/register", element: <Register /> },
+      { path: "/signIn", element: <SignIn /> },
+      { path: "/forgot-password", element: <ForgotPassword /> },
+      { path: "/email-sent", element: <EmailSent /> },
+      { path: "/reset-password", element: <ResetPassword /> },
+      { path: "/verify-email-message", element: <VerifyEmailMessage /> },
+      { path: "/resend-verification", element: <EmailVerified /> },
+      {
+        path: "/profile",
+        element: <Profile />,
         children: [
-
-            {
-                path: '/',
-                element: <Home />
-            },
-            {
-              path: 'Cabinet',
-              element: <Cabinet />,
-            },
-            {
-              path: 'Traders',
-              element: <Traders />,
-            },
-            {
-              path: 'Statistics',
-              element: <Statistics />,
-            },
-            {
-              path: 'Instructions',
-              element: <Instructions />,
-            },
-            {
-              path: 'Help',
-              element: <Help />,
-            },
-          ],
-        },
-      ],
-    },
-  ]);
-            {
-                path: "/verify-email-message",
-                element: <VerifyEmailMessage />,
-            },
-            {
-                path: "/resend-verification",
-                element: <EmailVerified />,
-            },
-            {
-                path: "profile",
-                element: <Profile />,
-            },
-            {
-                path: "Header",
-                element: <Header />,
-            },
-            {
-                path: "Footer",
-                element: <Footer />,
-            }
-        ]
-    }
-])
+          { path: "Cabinet", element: <Cabinet /> },
+          { path: "Traders", element: <Traders /> },
+          { path: "Statistics", element: <Statistics /> },
+          { path: "Instructions", element: <Instructions /> },
+          { path: "Help", element: <Help /> },
+        ],
+      },
+    ],
+  },
+]);
